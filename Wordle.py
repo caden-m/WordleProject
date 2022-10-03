@@ -28,12 +28,12 @@ def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
 def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk))
 
-guess = 'mateo'
-Uguess = guess.upper()
+guess = 'tateo'
+Uguess = guess.lower()
 print(Uguess)
 UcharacterizedGuess = list(Uguess)
 actual = 'ehtan'
-Uactual = actual.upper()
+Uactual = actual.lower()
 print(Uactual)
 UcharacterizedActual = list(Uactual)
 
@@ -46,15 +46,15 @@ color = UNKNOWN_COLOR
 for i in range(5):
     if UcharacterizedGuess[i] == UcharacterizedActual[i]:
         prGreen(UcharacterizedGuess[i])
-        def set_square_color(self, row, col, color):
-            self._grid[1][i].set_color(CORRECT_COLOR)
+        def set_square_color(self, row, col, CORRECT_COLOR):
+            self._grid[row][col].set_color(CORRECT_COLOR)
     elif UcharacterizedGuess[i] in UcharacterizedActual:
         prYellow(UcharacterizedGuess[i])
-        def set_square_color(self, row, col, color):
+        def set_square_color(self, row, col, PRESENT_COLOR):
             self._grid[1][i].set_color(PRESENT_COLOR)
     else:
         prLightGray(UcharacterizedGuess[i])
-        def set_square_color(self, row, col, color):
+        def set_square_color(self, row, col, MISSING_COLOR):
             self._grid[1][i].set_color(MISSING_COLOR)
 
 # CORRECT_COLOR = "#66BB66"       # Light green for correct letters
