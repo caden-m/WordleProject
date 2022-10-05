@@ -12,9 +12,8 @@ from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
-    word = random.choice(FIVE_LETTER_WORDS)
-
     def enter_action(s):
+        word = random.choice(FIVE_LETTER_WORDS)
         row = 0
         s.lower()
         if s in FIVE_LETTER_WORDS:
@@ -39,10 +38,11 @@ def wordle():
                 WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
 
         row = row + 1
+        gw.set_current_row(row)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
-    gw.set_current_row(row)
+    
 
     # c = 0 
     # for i in word:
