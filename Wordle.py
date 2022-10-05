@@ -19,6 +19,16 @@ def wordle():
             gw.show_message("Great guess!")
         else:
             gw.show_message("Not in word list.")
+        
+        for i, guessLetter in enumerate(Uguess):
+            if Uguess[i] == Uactual[i]:
+                WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
+                Uactual = Uactual.replace(guessLetter, '-', 1)
+            elif guessLetter in Uactual:
+                WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
+                Uactual = Uactual.replace(guessLetter, '-', 1)
+            else:
+                WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
@@ -53,6 +63,7 @@ row = 1
 col = 0
 color = UNKNOWN_COLOR
 
+<<<<<<< HEAD
 for i, guessLetter in enumerate(Uguess):
     if Uguess[i] == Uactual[i]:
         WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(self), i, CORRECT_COLOR)
@@ -62,6 +73,10 @@ for i, guessLetter in enumerate(Uguess):
         Uactual = Uactual.replace(guessLetter, '-', 1)
     else:
         WordleGWindow.set_square_color(self,WordleGWindow.get_current_row(self), i, MISSING_COLOR)
+=======
+
+
+>>>>>>> 39574d286026ad4a6581ee3b496ebf6d45cbd4b1
     # if UcharacterizedGuess[i] == UcharacterizedActual[i]:
     #     prGreen(UcharacterizedGuess[i])
     #     WordleGWindow.set_square_color(WordleGWindow.get_current_row(), i, CORRECT_COLOR)
