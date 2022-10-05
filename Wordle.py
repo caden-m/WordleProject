@@ -12,12 +12,12 @@ from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
+    word = random.choice(FIVE_LETTER_WORDS)
     def enter_action(s):
-        word = random.choice(FIVE_LETTER_WORDS)
         row = 0
-        s.lower()
+        s = s.lower()
         if s in FIVE_LETTER_WORDS:
-            gw.show_message("Great guess!")
+            gw.show_message("Great guess! Keep trying.")
         else:
             gw.show_message("Not in word list.")
 
@@ -49,8 +49,6 @@ def wordle():
     #     gw.set_square_letter(0, c, i)
     #     c+= 1
     #     print(i,c)
-
-# Startup code
 
 if __name__ == "__main__":
     wordle()
