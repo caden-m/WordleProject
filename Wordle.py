@@ -43,11 +43,11 @@ from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, UNKNOWN_
 # def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 # def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk))
 
-guess = 'tateo'
+guess = 'tttet'
 Uguess = guess.lower()
 print(Uguess)
 UcharacterizedGuess = list(Uguess)
-actual = 'ehtan'
+actual = 'tttan'
 Uactual = actual.lower()
 print(Uactual)
 UcharacterizedActual = list(Uactual)
@@ -57,16 +57,17 @@ print(UcharacterizedActual)
 row = 1
 col = 0
 color = UNKNOWN_COLOR
+self = WordleGWindow()
 
 for i, guessLetter in enumerate(Uguess):
     if Uguess[i] == Uactual[i]:
-        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(), i, CORRECT_COLOR)
+        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(self), i, CORRECT_COLOR)
         Uactual = Uactual.replace(guessLetter, '-', 1)
     elif guessLetter in Uactual:
-        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(), i, PRESENT_COLOR)
+        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(self), i, PRESENT_COLOR)
         Uactual = Uactual.replace(guessLetter, '-', 1)
     else:
-        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(), i, MISSING_COLOR)
+        WordleGWindow.set_square_color(self,WordleGWindow.get_current_row(self), i, MISSING_COLOR)
     # if UcharacterizedGuess[i] == UcharacterizedActual[i]:
     #     prGreen(UcharacterizedGuess[i])
     #     WordleGWindow.set_square_color(WordleGWindow.get_current_row(), i, CORRECT_COLOR)
