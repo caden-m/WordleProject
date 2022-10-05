@@ -57,10 +57,6 @@ if __name__ == "__main__":
 # def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 # def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk))
 
-# guess = 'tttet'
-# Uguess = guess.lower()
-# print(Uguess)
-
 color = UNKNOWN_COLOR
 
 # CORRECT_COLOR = "#66BB66"       # Light green for correct letters
@@ -68,7 +64,6 @@ color = UNKNOWN_COLOR
 # MISSING_COLOR = "#999999"       # Gray for letters that don't appear
 # UNKNOWN_COLOR = "#FFFFFF"       # Undetermined letters are white
 # KEY_COLOR = "#DDDDDD"           # Keys are colored light gray
-# File: Wordle.py
 
 
 
