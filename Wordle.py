@@ -1,8 +1,10 @@
 # File: Wordle.py
 
 """
-This module is the starter file for the Wordle assignment.
-BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
+PM: Caden Marquis 
+SCRUM Master: Matthew McCord 
+SCRUM Team: Brittany Choi, Taylor Anderson, Stefany Guevara
+
 """
 
 import enum
@@ -63,20 +65,16 @@ row = 1
 col = 0
 color = UNKNOWN_COLOR
 
-<<<<<<< HEAD
 for i, guessLetter in enumerate(Uguess):
     if Uguess[i] == Uactual[i]:
-        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(self), i, CORRECT_COLOR)
+        WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
         Uactual = Uactual.replace(guessLetter, '-', 1)
     elif guessLetter in Uactual:
-        WordleGWindow.set_square_color(self, WordleGWindow.get_current_row(self), i, PRESENT_COLOR)
+        WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
         Uactual = Uactual.replace(guessLetter, '-', 1)
     else:
-        WordleGWindow.set_square_color(self,WordleGWindow.get_current_row(self), i, MISSING_COLOR)
-=======
+        WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
 
-
->>>>>>> 39574d286026ad4a6581ee3b496ebf6d45cbd4b1
     # if UcharacterizedGuess[i] == UcharacterizedActual[i]:
     #     prGreen(UcharacterizedGuess[i])
     #     WordleGWindow.set_square_color(WordleGWindow.get_current_row(), i, CORRECT_COLOR)
@@ -94,17 +92,6 @@ for i, guessLetter in enumerate(Uguess):
 # KEY_COLOR = "#DDDDDD"           # Keys are colored light gray
 # File: Wordle.py
 
-"""
-PM: Caden Marquis 
-SCRUM Master: Matthew McCord 
-SCRUM Team: Brittany Choi, Taylor Anderson, Stefany Guevara
-
-"""
-
-import random
-
-from WordleDictionary import FIVE_LETTER_WORDS
-from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 
 
