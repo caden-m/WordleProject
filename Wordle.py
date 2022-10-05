@@ -52,7 +52,6 @@ print(UcharacterizedActual)
 row = 1
 col = 0
 color = UNKNOWN_COLOR
-self = WordleGWindow()
 
 for i, guessLetter in enumerate(Uguess):
     if Uguess[i] == Uactual[i]:
