@@ -65,15 +65,7 @@ row = 1
 col = 0
 color = UNKNOWN_COLOR
 
-for i, guessLetter in enumerate(Uguess):
-    if Uguess[i] == Uactual[i]:
-        WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
-        Uactual = Uactual.replace(guessLetter, '-', 1)
-    elif guessLetter in Uactual:
-        WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
-        Uactual = Uactual.replace(guessLetter, '-', 1)
-    else:
-        WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
+
 
     # if UcharacterizedGuess[i] == UcharacterizedActual[i]:
     #     prGreen(UcharacterizedGuess[i])
