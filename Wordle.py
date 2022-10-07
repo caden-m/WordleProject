@@ -27,13 +27,13 @@ def moveToNextRow(gw):
                 gw.set_current_row(row + 1)
 
 def wordle(ActualWord, gw):
+
     def enter_action(s):
         s = s.lower()
         if s in FIVE_LETTER_WORDS:
             gw.show_message("Great guess! Keep trying.")
         else:
             gw.show_message("Not in word list.")
-
         word = ActualWord
         UcharacterizedGuess = list(s)
         UcharacterizedActual = list(word)
@@ -54,11 +54,16 @@ def wordle(ActualWord, gw):
             if s[i] == word[i]:
                 WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
                 word = word.replace(guessLetter, '-', 1)
+                gw.set_key_color(guessLetter, CORRECT_COLOR)
             elif guessLetter in word:
                 WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
                 word = word.replace(guessLetter, '-', 1)
+                if gw.get_key_color(guessLetter) != CORRECT_COLOR:
+                    gw.set_key_color(guessLetter, PRESENT_COLOR)
             else:
                 WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
+                if gw.get_key_color(guessLetter) != CORRECT_COLOR and gw.get_key_color(guessLetter) != PRESENT_COLOR:
+                    gw.set_key_color(guessLetter, MISSING_COLOR)
         
         
         if s == ActualWord:
@@ -66,6 +71,7 @@ def wordle(ActualWord, gw):
             exit
         else:
             moveToNextRow(gw)
+    
     gw.add_enter_listener(enter_action)
 
 
@@ -75,15 +81,6 @@ if __name__ == "__main__":
     gw = WordleGWindow()
     wordle(ActualWord, gw)
 
-
-# def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
-# def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
-# def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk))
-# CORRECT_COLOR = "#66BB66"       # Light green for correct letters
-# PRESENT_COLOR = "#CCBB66"       # Brownish yellow for misplaced letters
-# MISSING_COLOR = "#999999"       # Gray for letters that don't appear
-# UNKNOWN_COLOR = "#FFFFFF"       # Undetermined letters are white
-# KEY_COLOR = "#DDDDDD"           # Keys are colored light gray
 
 
 
