@@ -35,6 +35,30 @@ def wordle():
 
 if __name__ == "__main__":
     wordle()
+    
+    
+# Function for moving to next row
+def moveToNextRow(gw):
+
+    # Check current row
+    row = gw.get_current_row() # row = 0
+    
+    # Make sure that current row is not last row
+    if row != 5:
+
+        # Look at each column
+        for i in range(5):
+            color = gw.get_square_color(row, i)
+            
+            # set current row as the next row    
+            if color != CORRECT_COLOR:
+                gw.set_current_row(row + 1)
+
+
+
+#Congratulatory message for when wordle is guessed
+    if __name__ == word:
+        gw.show_message("Splendid!")
 
 
 
