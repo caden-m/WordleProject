@@ -8,50 +8,59 @@ SCRUM Team: Brittany Choi, Taylor Anderson, Stefany Guevara
 
 import enum
 import random
+from this import s
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS
 
-def wordle(ActualWord, gw):
-    # row = gw.get_current_row()
-    # while gameOver == False:
-    def enter_action(s):
-        s = s.lower()
-        if s in FIVE_LETTER_WORDS:
-            gw.show_message("Great guess! Keep trying.")
+def enter_action(s, ActualWord):
+    s = s.lower()
+    if s in FIVE_LETTER_WORDS:
+        gw.show_message("Great guess! Keep trying.")
+    else:
+        gw.show_message("Not in word list.")
+    word = ActualWord
+    UcharacterizedGuess = list(s)
+    UcharacterizedActual = list(word)
+
+    print(UcharacterizedGuess)
+    print(UcharacterizedActual)
+    
+    row = gw.get_current_row()
+    c = 0 
+    for i in s:
+        gw.set_square_letter(row, c, i)
+        c+= 1
+        print(i,c)
+
+
+    for i, guessLetter in enumerate(s):
+        if s[i] == word[i]:
+            WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
+            word = word.replace(guessLetter, '-', 1)
+        elif guessLetter in word:
+            WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
+            word = word.replace(guessLetter, '-', 1)
         else:
-            gw.show_message("Not in word list.")
+            WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
+    if s == ActualWord or guessNum == 5:
+        guessNum = 6
+    else:
+        guessNum = guessNum + 1
+        gw.set_current_row(gw, WordleGWindow.get_current_row(gw) + 1)
+        gw.add_enter_listener(enter_action())
 
-        word = ActualWord
-        UcharacterizedGuess = list(s)
-        UcharacterizedActual = list(word)
+    
+    # row = row + 1
+    # print(row)
+    # gw.set_current_row(row)
 
-        print(UcharacterizedGuess)
-        print(UcharacterizedActual)
-        
-        
-        c = 0 
-        for i in s:
-            gw.set_square_letter(0, c, i)
-            c+= 1
-            print(i,c)
+def wordle(ActualWord, gw):
+    ActualWord = ActualWord
+    gw.add_enter_listener(enter_action(s, ActualWord))
 
 
-        for i, guessLetter in enumerate(s):
-            if s[i] == word[i]:
-                WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
-                word = word.replace(guessLetter, '-', 1)
-            elif guessLetter in word:
-                WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
-                word = word.replace(guessLetter, '-', 1)
-            else:
-                WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
 
-        
-        # row = row + 1
-        # print(row)
-        # gw.set_current_row(row)
 
-    gw.add_enter_listener(enter_action)
 
 
 
