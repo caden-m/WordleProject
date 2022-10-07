@@ -11,9 +11,22 @@ import random
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS
 
+def moveToNextRow(gw):
+
+    # Check current row
+    row = gw.get_current_row() # row = 0
+    
+    # Make sure that current row is not last row
+    if row != 5:
+        # Look at each column
+        for i in range(5):
+            color = gw.get_square_color(row, i)
+            
+            # set current row as the next row    
+            if color != CORRECT_COLOR:
+                gw.set_current_row(row + 1)
+
 def wordle(ActualWord, gw):
-    # row = gw.get_current_row()
-    # while gameOver == False:
     def enter_action(s):
         s = s.lower()
         if s in FIVE_LETTER_WORDS:
@@ -29,9 +42,10 @@ def wordle(ActualWord, gw):
         print(UcharacterizedActual)
         
         
+        row = gw.get_current_row()
         c = 0 
         for i in s:
-            gw.set_square_letter(0, c, i)
+            gw.set_square_letter(row, c, i)
             c+= 1
             print(i,c)
 
@@ -45,12 +59,13 @@ def wordle(ActualWord, gw):
                 word = word.replace(guessLetter, '-', 1)
             else:
                 WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
-
         
-        # row = row + 1
-        # print(row)
-        # gw.set_current_row(row)
-
+        
+        if s == ActualWord:
+            gw.show_message("You win! Congrats!")
+            exit
+        else:
+            moveToNextRow(gw)
     gw.add_enter_listener(enter_action)
 
 
