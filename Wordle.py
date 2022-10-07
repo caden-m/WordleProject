@@ -31,7 +31,7 @@ def wordle(ActualWord, gw):
     def enter_action(s):
         s = s.lower()
         if s in FIVE_LETTER_WORDS:
-            gw.show_message("Great guess! Keep trying.")
+            gw.show_message("Great guess! Keep going.")
         else:
             gw.show_message("Not in word list.")
         word = ActualWord
