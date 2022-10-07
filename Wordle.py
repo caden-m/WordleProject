@@ -80,10 +80,3 @@ if __name__ == "__main__":
     ActualWord = random.choice(FIVE_LETTER_WORDS).lower()
     gw = WordleGWindow()
     wordle(ActualWord, gw)
-
-
-
-
-
-
-
