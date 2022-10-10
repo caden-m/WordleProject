@@ -53,12 +53,14 @@ def wordle(ActualWord, gw):
                     WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, CORRECT_COLOR)
                     word = word.replace(guessLetter, '-', 1)
                     gw.set_key_color(guessLetter, CORRECT_COLOR)
-                elif guessLetter in word:
-                    WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
-                    word = word.replace(guessLetter, '-', 1)
-                    if gw.get_key_color(guessLetter) != CORRECT_COLOR:
-                        gw.set_key_color(guessLetter, PRESENT_COLOR)
-                else:
+            for i, guessLetter in enumerate(s):
+                if guessLetter in word:
+                    if gw.get_square_color(WordleGWindow.get_current_row(gw), i) != CORRECT_COLOR:
+                        WordleGWindow.set_square_color(gw, WordleGWindow.get_current_row(gw), i, PRESENT_COLOR)
+                        word = word.replace(guessLetter, '-', 1)
+                        if gw.get_key_color(guessLetter) != CORRECT_COLOR:
+                            gw.set_key_color(guessLetter, PRESENT_COLOR)
+                elif gw.get_square_color(WordleGWindow.get_current_row(gw), i) != CORRECT_COLOR and gw.get_square_color(WordleGWindow.get_current_row(gw), i) != PRESENT_COLOR:
                     WordleGWindow.set_square_color(gw,WordleGWindow.get_current_row(gw), i, MISSING_COLOR)
                     if gw.get_key_color(guessLetter) != CORRECT_COLOR and gw.get_key_color(guessLetter) != PRESENT_COLOR:
                         gw.set_key_color(guessLetter, MISSING_COLOR)
